@@ -1,5 +1,6 @@
 package com.merrimack.studyhelper.service.study;
 
+import com.merrimack.studyhelper.domain.enumclass.DisplayStatus;
 import com.merrimack.studyhelper.domain.study.Study;
 import com.merrimack.studyhelper.domain.study.StudyRepository;
 import com.merrimack.studyhelper.domain.user.request.CreateStudy;
@@ -21,6 +22,15 @@ public class StudyService {
 
     public void createStudy(CreateStudy createStudy) {
         createStudy.validate();
+
+        Study study = Study.builder()
+                .title(createStudy.getTitle())
+                .content(createStudy.getContent())
+                .max(createStudy.getMax())
+                .displayStatus(DisplayStatus.OPEN)
+                .build();
+
+        studyRepository.save(study);
 
     }
 

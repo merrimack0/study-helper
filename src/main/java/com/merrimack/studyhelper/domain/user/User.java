@@ -1,5 +1,6 @@
 package com.merrimack.studyhelper.domain.user;
 
+import com.merrimack.studyhelper.domain.BaseTimeEntity;
 import com.merrimack.studyhelper.domain.study.Study;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User {
+@Table(name="user", schema = "study")
+public class User extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,9 +26,6 @@ public class User {
     private String email;
 
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "user")
-    private List<Study> studies = new ArrayList<>();
 
     @Builder
     public User(String name, String email, String phoneNumber){

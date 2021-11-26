@@ -1,11 +1,13 @@
 package com.merrimack.studyhelper.support;
 
+import lombok.Getter;
 import org.springframework.data.util.Pair;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Getter
 public class ApiResult<T> {
     private Integer code;
     private String message;

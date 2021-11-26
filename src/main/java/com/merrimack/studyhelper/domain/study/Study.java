@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name="study", schema = "study")
 public class Study extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +27,18 @@ public class Study extends BaseTimeEntity {
 
     private Long leaderId;
 
+    private Long max;
+
+    @Enumerated(EnumType.STRING)
     private DisplayStatus displayStatus;
 
-    @OneToMany(mappedBy = "study")
-    private List<User> users = new ArrayList<>();
-
     @Builder
-    public Study(String title, String content, Long leaderId){
+    public Study(String title, String content, Long leaderId, Long max, DisplayStatus displayStatus){
         this.title = title;
         this.content = content;
         this.leaderId = leaderId;
+        this.max = max;
+        this.displayStatus = displayStatus;
     }
 
 }

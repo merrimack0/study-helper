@@ -30,7 +30,7 @@ public class CreateStudy {
     private Subject subject;
 
     public void validate() {
-        if (Objects.isNull(title) || Objects.isNull(content) || Objects.isNull(time) || Objects.isNull(place)) {
+        if (Objects.isNull(title) || Objects.isNull(content)) {
             throw new ApiException(ApiStatus.MISSING_REQUEST_PARAMETER);
         }
     }

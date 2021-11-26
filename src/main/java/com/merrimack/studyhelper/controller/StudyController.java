@@ -1,5 +1,6 @@
 package com.merrimack.studyhelper.controller;
 
+import com.merrimack.studyhelper.domain.user.request.CreateStudy;
 import com.merrimack.studyhelper.domain.user.request.UserRequest;
 import com.merrimack.studyhelper.service.study.StudyService;
 import com.merrimack.studyhelper.support.ApiResult;
@@ -16,14 +17,14 @@ public class StudyController {
     StudyService studyService;
 
     @PostMapping("/create")
-    public ApiResult create(@RequestBody UserRequest userRequest) {
-        studyService.createStudy(userRequest);
+    public @ResponseBody ApiResult create(@RequestBody CreateStudy createStudy) {
+        studyService.createStudy(createStudy);
         return ApiResult.of(ApiStatus.SUCCESS);
     }
 
     @DeleteMapping("/delete")
     public ApiResult delete(@RequestBody UserRequest userRequest) {
-        studyService.removeStudy(userRequest);
+//        studyService.removeStudy(userRequest);
         return ApiResult.of(ApiStatus.SUCCESS);
     }
 }

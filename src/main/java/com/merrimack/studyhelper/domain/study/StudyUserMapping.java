@@ -5,22 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class StudyUserMapping {
+@Table(name="study_user_mapping", schema = "study")
+public class StudyUserMapping implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
-    private User userId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "studyId")
-    private Study studyId;
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_id", referencedColumnName = "id")
+    private Study study;
 }
