@@ -19,12 +19,12 @@ public class StudyService {
     @Autowired
     StudyRepository studyRepository;
 
-    public void joinStudy(UserRequest userRequest) {
+    public void createStudy(CreateStudy createStudy) {
+        createStudy.validate();
 
     }
 
-    public void createStudy(CreateStudy createStudy) {
-
+    public void joinStudy(UserRequest userRequest) {
 
     }
 
