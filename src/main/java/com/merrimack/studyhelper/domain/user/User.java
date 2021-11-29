@@ -27,6 +27,9 @@ public class User extends BaseTimeEntity {
 
     private String phoneNumber;
 
+    @ManyToMany(mappedBy = "study", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Study> studys;
+
     @Builder
     public User(String name, String email, String phoneNumber){
         this.name = name;
