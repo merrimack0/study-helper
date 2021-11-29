@@ -2,12 +2,14 @@ package com.merrimack.studyhelper.domain.study;
 
 import com.merrimack.studyhelper.domain.BaseTimeEntity;
 import com.merrimack.studyhelper.domain.enumclass.DisplayStatus;
+import com.merrimack.studyhelper.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,9 +47,6 @@ public class Study extends BaseTimeEntity {
         this.leaderId = leaderId;
         this.max = max;
         this.displayStatus = displayStatus;
-    }
-
-    public addUser(User user) {
     }
 
 }
