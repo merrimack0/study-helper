@@ -29,6 +29,7 @@ public class Study extends BaseTimeEntity {
     private Long leaderId;
 
     private Long max;
+    
 
     @Enumerated(EnumType.STRING)
     private DisplayStatus displayStatus;
