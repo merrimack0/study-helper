@@ -11,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 
-public class CreateStudy {
+public class StudyRequest {
 
     private String title;
 

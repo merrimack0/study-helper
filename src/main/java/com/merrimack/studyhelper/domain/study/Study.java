@@ -1,5 +1,7 @@
 package com.merrimack.studyhelper.domain.study;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.merrimack.studyhelper.domain.BaseTimeEntity;
 import com.merrimack.studyhelper.domain.enumclass.DisplayStatus;
 import com.merrimack.studyhelper.domain.user.User;
@@ -15,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="study", schema = "study")
+@Table(name = "study", schema = "study")
 public class Study extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,20 +31,18 @@ public class Study extends BaseTimeEntity {
     private Long leaderId;
 
     private Long max;
-    
+
 
     @Enumerated(EnumType.STRING)
     private DisplayStatus displayStatus;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "study_user_mapping",
-            joinColumns = @JoinColumn(name = "study_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonManagedReference
+    @ManyToMany(mappedBy = "studys", cascade = CascadeType.ALL)
     private List<User> users;
 
 
     @Builder
-    public Study(String title, String content, Long leaderId, Long max, DisplayStatus displayStatus){
+    public Study(String title, String content, Long leaderId, Long max, DisplayStatus displayStatus) {
         this.title = title;
         this.content = content;
         this.leaderId = leaderId;
