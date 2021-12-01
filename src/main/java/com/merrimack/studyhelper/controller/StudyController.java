@@ -1,6 +1,7 @@
 package com.merrimack.studyhelper.controller;
 
-import com.merrimack.studyhelper.domain.user.request.CreateStudy;
+import com.merrimack.studyhelper.domain.study.Study;
+import com.merrimack.studyhelper.domain.user.request.StudyRequest;
 import com.merrimack.studyhelper.domain.user.request.UserRequest;
 import com.merrimack.studyhelper.service.study.StudyService;
 import com.merrimack.studyhelper.support.ApiResult;
@@ -8,23 +9,35 @@ import com.merrimack.studyhelper.support.ApiStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/study")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudyController {
 
     @Autowired
     StudyService studyService;
 
     @PostMapping("/create")
-    public @ResponseBody ApiResult create(@RequestBody CreateStudy createStudy) {
-        studyService.createStudy(createStudy);
+    public ApiResult create(@RequestBody StudyRequest studyRequest) {
+        studyService.createStudy(studyRequest);
         return ApiResult.of(ApiStatus.SUCCESS);
     }
 
     @DeleteMapping("/delete")
-    public ApiResult delete(@RequestBody UserRequest userRequest) {
-//        studyService.removeStudy(userRequest);
+    public ApiResult delete(@RequestBody StudyRequest studyRequest) {
+        studyService.removeStudy(studyRequest);
         return ApiResult.of(ApiStatus.SUCCESS);
+    }
+
+    @PostMapping("/join")
+    public ApiResult join(@RequestBody UserRequest userRequest) {
+        studyService.joinStudy(userRequest);
+        return ApiResult.of(ApiStatus.SUCCESS);
+    }
+
+    @GetMapping
+    public List<Study> findAll() {
+        return studyService.findAll();
     }
 }
