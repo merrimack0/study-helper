@@ -1,6 +1,5 @@
 package com.merrimack.studyhelper.domain.study;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.merrimack.studyhelper.domain.user.User;
 import lombok.Getter;
 

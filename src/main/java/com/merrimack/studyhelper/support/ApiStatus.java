@@ -13,7 +13,7 @@ public enum ApiStatus implements ApiStatusResponsible {
     MISSING_REQUEST_PARAMETER(-500, "필수 정보가 존재하지 않습니다.", true),
 
     PRODUCT_ID_NOT_EXIST(-100, "해당 상품이 존재하지 않습니다.", false),
-    USER_ID_NOT_EXIST(-101, "해당 유저가 존재하지 않습니다.", false)
+    USER_ID_NOT_EXIST(-101, "해당 유저가 존재하지 않습니다.", true)
 
     ;
     private Integer code;
