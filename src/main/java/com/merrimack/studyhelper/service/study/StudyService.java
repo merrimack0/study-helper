@@ -53,7 +53,6 @@ public class StudyService {
     }
 
     public void joinStudy(UserRequest userRequest) {
-        userRequest.validate();
         Study study = find(userRequest.getStudyId());
         User user = userService.find(userRequest.getId());
         user.addStudy(study);

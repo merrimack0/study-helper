@@ -7,12 +7,14 @@ import com.merrimack.studyhelper.service.study.StudyService;
 import com.merrimack.studyhelper.support.ApiResult;
 import com.merrimack.studyhelper.support.ApiStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/study")
+@ResponseBody
 public class StudyController {
 
     @Autowired
@@ -31,7 +33,7 @@ public class StudyController {
     }
 
     @PostMapping("/join")
-    public ApiResult join(@RequestBody UserRequest userRequest) {
+    public ApiResult join(@Validated @RequestBody UserRequest userRequest) {
         studyService.joinStudy(userRequest);
         return ApiResult.of(ApiStatus.SUCCESS);
     }

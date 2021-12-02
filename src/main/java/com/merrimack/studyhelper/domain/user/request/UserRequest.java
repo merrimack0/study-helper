@@ -1,26 +1,20 @@
 package com.merrimack.studyhelper.domain.user.request;
 
-import com.merrimack.studyhelper.support.ApiException;
-import com.merrimack.studyhelper.support.ApiStatus;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
-import java.util.Objects;
 
 @Getter
 @Setter
-
+@Validated
 public class UserRequest {
 
+    @NotNull
     private Long id;
 
-    private String name;
-
+    @NotNull
     private Long studyId;
 
-    public void validate() {
-        if (Objects.isNull(id) || Objects.isNull(studyId)) {
-            throw new ApiException(ApiStatus.MISSING_REQUEST_PARAMETER);
-        }
-    }
 }
