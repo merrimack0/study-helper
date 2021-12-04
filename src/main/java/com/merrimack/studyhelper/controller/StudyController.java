@@ -1,6 +1,7 @@
 package com.merrimack.studyhelper.controller;
 
 import com.merrimack.studyhelper.domain.study.Study;
+import com.merrimack.studyhelper.domain.user.request.ChangeStudyRequest;
 import com.merrimack.studyhelper.domain.user.request.StudyRequest;
 import com.merrimack.studyhelper.domain.user.request.UserRequest;
 import com.merrimack.studyhelper.service.study.StudyService;
@@ -23,6 +24,12 @@ public class StudyController {
     @PostMapping("/create")
     public ApiResult create(@RequestBody StudyRequest studyRequest) {
         studyService.createStudy(studyRequest);
+        return ApiResult.of(ApiStatus.SUCCESS);
+    }
+
+    @PostMapping("/change")
+    public ApiResult update(@Validated @RequestBody ChangeStudyRequest changeStudyRequest) {
+        studyService.changeTime(changeStudyRequest);
         return ApiResult.of(ApiStatus.SUCCESS);
     }
 
