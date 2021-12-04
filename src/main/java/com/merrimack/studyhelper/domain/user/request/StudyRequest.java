@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.security.auth.Subject;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -28,6 +29,8 @@ public class StudyRequest {
     private String place;
 
     private Subject subject;
+
+    private List<Long> timeId;
 
     public void validate() {
         if (Objects.isNull(title) || Objects.isNull(content)) {
