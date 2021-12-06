@@ -13,7 +13,9 @@ import com.merrimack.studyhelper.support.ApiException;
 import com.merrimack.studyhelper.support.ApiStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component
 @Transactional
+@Service
 public class StudyService {
 
     @Autowired
@@ -78,4 +81,10 @@ public class StudyService {
     public List<Study> findAll() {
         return studyRepository.findAll();
     }
+
+    public List<Study> findByTitleAndContent(String title, String content) {
+        return studyRepository.findByTitleAndContent(title, content);
+    }
+
+
 }
