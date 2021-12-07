@@ -1,5 +1,6 @@
-package com.merrimack.studyhelper;
+package com.merrimack.studyhelper.service;
 
+import com.merrimack.studyhelper.StudyhelperApplication;
 import com.merrimack.studyhelper.domain.study.Study;
 import com.merrimack.studyhelper.domain.user.request.StudyRequest;
 import com.merrimack.studyhelper.service.study.StudyService;
